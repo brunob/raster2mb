@@ -188,6 +188,8 @@ if __name__ == '__main__':
     mb_db = init_db(db_filename, 
         [('name', options.name),
         ('version', options.version),
+        ('maxzoom', maxzoom),
+        ('minzoom', 0),
         ('format', tileformat),
         ('description', options.description),
         ('type', layer_type)])
@@ -201,9 +203,9 @@ if __name__ == '__main__':
             print "Zoom %s - pixel %.20f" % (zoom, zoompixels[zoom]), int(2.0**zoom*tilesize)
             print "-"*80
 
-        for ix in range(0, int( ceil( xsize / rmaxsize))):
+        for ix in range(0, int(ceil( xsize / rmaxsize))):
             # Read window xsize in pixels.
-            if ix+1 == int( ceil( xsize / rmaxsize)) and xsize % rmaxsize != 0:
+            if ix+1 == int(ceil(xsize / rmaxsize)) and xsize % rmaxsize != 0:
                 rxsize = int(xsize % rmaxsize)
             else:
                 rxsize = int(rmaxsize)
@@ -211,9 +213,9 @@ if __name__ == '__main__':
             # Read window left coordinate in pixels.
             rx = int(ix * rmaxsize)
 
-            for iy in range(0, int(ceil( ysize / rmaxsize))):
+            for iy in range(0, int(ceil(ysize / rmaxsize))):
                 # Read window ysize in pixels.
-                if iy+1 == int(ceil( ysize / rmaxsize)) and ysize % rmaxsize != 0:
+                if iy+1 == int(ceil(ysize / rmaxsize)) and ysize % rmaxsize != 0:
                     rysize = int(ysize % rmaxsize)
                 else:
                     rysize = int(rmaxsize)
