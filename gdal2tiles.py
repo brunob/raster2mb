@@ -189,6 +189,7 @@ if __name__ == '__main__':
     mb_db = init_db(db_filename, 
         [('name', options.name),
         ('version', options.version),
+        ('format', tileformat),
         ('description', options.description),
         ('type', layer_type)])
 
