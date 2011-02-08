@@ -67,7 +67,6 @@ def writemb(index, data, dxsize, dysize, bands, mb_db):
     cur = mb_db.cursor()
     d = open('tmp.png', 'rb').read()
     cur.execute(query, (sqlite3.Binary(d),))
-    mb_db.commit()
     cur.close()
     return 0
 
@@ -238,8 +237,11 @@ if __name__ == '__main__':
                 # Load raster from read window.
                 data = dataset.ReadRaster(rx, ry, rxsize, rysize, dxsize, dysize)
                 writemb((zoom, ix, iy), data, dxsize, dysize, bands, mb_db)
+                if tileno % 1000 == 0:
+                    mb_db.commit()
                 tileno += 1
 
+    mb_db.commit()
     mb_db.close()
     # Last \n for the progress bar
     print "\nDone creating .mbtiles file. You can now drop this file into a"
