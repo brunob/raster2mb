@@ -1,5 +1,7 @@
 ![gdal2mb logo](http://mapbox.com/sites/mapbox.com/files/imagecache/scale_150x/tools_gdal2mb.png)
 
+An importer for [MBTiles](https://github.com/mapbox/mbtiles-spec) that processes GeoTIFF and other [GDAL](http://www.gdal.org/)-compatible [raster](http://en.wikipedia.org/wiki/Raster_graphics) formats into tilesets.
+
 ### Installation
 
 * GDAL
@@ -30,3 +32,7 @@ This is a variation of the [gdal2tiles](http://www.klokan.cz/projects/gdal2tiles
 Usage of this command is
 
 The resultant `.mbtiles` file can be used in Maps on a Stick and elsewhere.
+
+### MBTiles
+
+This tool is compatible with [MBTiles 1.1](https://github.com/mapbox/mbtiles-spec/blob/master/1.1/spec.md). It does not implement the optional `bounds` entry.
