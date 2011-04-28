@@ -59,7 +59,7 @@ def writemb(index, data, dxsize, dysize, bands, mb_db):
     else:
         tmp = tempdriver.Create('', tilesize, tilesize, bands=bands)
 
-    tmp.WriteRaster( 0, tilesize-dysize, dxsize, dysize, data, band_list=range(1, bands+1))
+    tmp.WriteRaster(0, tilesize-dysize, dxsize, dysize, data, band_list=range(1, bands+1))
     tiledriver.CreateCopy('tmp.png', tmp, strict=0)
     query = """insert into tiles 
         (zoom_level, tile_column, tile_row, tile_data) 
@@ -131,6 +131,8 @@ if __name__ == '__main__':
         parser.usage()
         
     bands = dataset.RasterCount
+    if bands > 3:
+        bands = 3
     if bands == 3 and tileformat == 'png':
         from Numeric import zeros
     xsize = dataset.RasterXSize
