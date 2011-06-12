@@ -29,10 +29,14 @@ Run `raster2mb -h` for usage instructions.
 
 This is a variation of the [gdal2tiles](http://www.klokan.cz/projects/gdal2tiles/) script that supports MapBox `mbtiles` SQLite tilesets as an output option. It has the same requirements as the original script - notably an installation of [GDAL](http://www.gdal.org/).
 
-Usage of this command is
-
-The resultant `.mbtiles` file can be used in Maps on a Stick and elsewhere.
-
 ### MBTiles
 
 This tool is compatible with [MBTiles 1.1](https://github.com/mapbox/mbtiles-spec/blob/master/1.1/spec.md). It does not implement the optional `bounds` entry.
+
+### Restrictions
+
+Because mbtiles is limited in the profiles it supports, it is only possible
+to use it to create tilesets from imagery that covers the entire world; 
+imagery which is smaller will create a database successfully, but it will
+not be in the neccesary spherical mercator profile. If you wish to build a
+tileset, you must first make your image cover the entire world.
