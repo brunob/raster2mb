@@ -53,7 +53,6 @@ def writemb(index, data, dxsize, dysize, bands, mb_db):
     if bands == 3 and tileformat == 'png':
         tmp = tempdriver.Create('', tilesize, tilesize, bands=4)
         alpha = tmp.GetRasterBand(4)
-        #from Numeric import zeros
         alphaarray = (zeros((dysize, dxsize)) + 255).astype('b')
         alpha.WriteArray( alphaarray, 0, tilesize-dysize )
     else:
@@ -133,8 +132,6 @@ if __name__ == '__main__':
     bands = dataset.RasterCount
     if bands > 3:
         bands = 3
-    if bands == 3 and tileformat == 'png':
-        from Numeric import zeros
     xsize = dataset.RasterXSize
     ysize = dataset.RasterYSize
 
